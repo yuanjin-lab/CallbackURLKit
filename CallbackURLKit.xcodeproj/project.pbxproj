@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48D0A14A1F0E28CE0019B815 /* Ulysses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D0A1491F0E28CE0019B815 /* Ulysses.swift */; };
-		48D0A14B1F0E298B0019B815 /* CallbackURLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A8D5101C37D84A00DB3306 /* CallbackURLKit.framework */; };
 		C418B1DD1C386C160097FDD9 /* CallbackURLKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C418B1DC1C386C160097FDD9 /* CallbackURLKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4A8D5141C37D84A00DB3306 /* CallbackURLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C4A8D5131C37D84A00DB3306 /* CallbackURLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4DB1E311D8421DE008DD3FB /* CallbackURLKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB1E2C1D8421DE008DD3FB /* CallbackURLKit.swift */; };
@@ -25,18 +23,7 @@
 		C4E32D5E1C398AE5005CD033 /* GoogleChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E32D4F1C398AAC005CD033 /* GoogleChrome.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		C445365D1F6F05E20006FFC4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C4A8D5071C37D84A00DB3306 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C4A8D50F1C37D84A00DB3306;
-			remoteInfo = CallbackURLKit;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		48D0A1491F0E28CE0019B815 /* Ulysses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ulysses.swift; path = Clients/Ulysses.swift; sourceTree = "<group>"; };
 		C418B1DA1C386C160097FDD9 /* CallbackURLKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CallbackURLKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C418B1DC1C386C160097FDD9 /* CallbackURLKitOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallbackURLKitOSX.h; sourceTree = "<group>"; };
 		C418B1DE1C386C160097FDD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48D0A14B1F0E298B0019B815 /* CallbackURLKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				C4E32D4F1C398AAC005CD033 /* GoogleChrome.swift */,
-				48D0A1491F0E28CE0019B815 /* Ulysses.swift */,
 			);
 			name = Clients;
 			sourceTree = "<group>";
@@ -228,7 +213,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				C445365E1F6F05E20006FFC4 /* PBXTargetDependency */,
 			);
 			name = CallbackURLKitClients;
 			productName = CallbackURLKitClients;
@@ -241,7 +225,7 @@
 		C4A8D5071C37D84A00DB3306 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = phimage;
 				TargetAttributes = {
 					C418B1D91C386C160097FDD9 = {
@@ -249,7 +233,7 @@
 					};
 					C4A8D50F1C37D84A00DB3306 = {
 						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 0800;
 					};
 					C4E32D551C398AE1005CD033 = {
 						CreatedOnToolsVersion = 7.2;
@@ -329,19 +313,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4E32D5E1C398AE5005CD033 /* GoogleChrome.swift in Sources */,
-				48D0A14A1F0E28CE0019B815 /* Ulysses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C445365E1F6F05E20006FFC4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C4A8D50F1C37D84A00DB3306 /* CallbackURLKit */;
-			targetProxy = C445365D1F6F05E20006FFC4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C418B1E01C386C160097FDD9 /* Debug */ = {
@@ -357,13 +332,12 @@
 				INFOPLIST_FILE = CallbackURLKitOSX/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitOSX;
 				PRODUCT_NAME = CallbackURLKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -380,13 +354,12 @@
 				INFOPLIST_FILE = CallbackURLKitOSX/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitOSX;
 				PRODUCT_NAME = CallbackURLKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -398,20 +371,14 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -454,20 +421,14 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -508,13 +469,11 @@
 				INFOPLIST_FILE = CallbackURLKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -530,12 +489,10 @@
 				INFOPLIST_FILE = CallbackURLKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -550,12 +507,10 @@
 				INFOPLIST_FILE = CallbackURLKitClients/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-DIMPORT";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitClients;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -570,12 +525,10 @@
 				INFOPLIST_FILE = CallbackURLKitClients/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-DIMPORT";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.CallbackURLKitClients;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

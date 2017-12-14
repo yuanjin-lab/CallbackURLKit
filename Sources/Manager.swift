@@ -3,7 +3,7 @@
 //  CallbackURLKit
 /*
 The MIT License (MIT)
-Copyright (c) 2017 Eric Marchand (phimage)
+Copyright (c) 2016 Eric Marchand (phimage)
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -28,31 +28,23 @@ import Foundation
     import AppKit
 #endif
 
-/// A class to perform and receive actions.
 open class Manager {
 
-    /// Singletong shared instance
+    // singletong shared instance
     open static let shared = Manager()
 
-    /// List of action/action closure
+    // List of action/action closure
     var actions: [Action: ActionHandler] = [:]
-    /// keep request for callback
+    // keep request for callback
     var requests: [RequestID: Request] = [:]
-
+    
+    // Specify an URL scheme for callback
     open var callbackURLScheme: String?
     
-    #if APP_EXTENSIONS
-    /// In case of application extension, put your extensionContext here
-    open var extensionContext: NSExtensionContext?
-    open var extensionContextCompletionHandler: ((Bool) -> Swift.Void)? = nil
-    #endif
-    
-    /// Init
-    public init(callbackURLScheme: String? = nil) {
-        self.callbackURLScheme = callbackURLScheme
+    init() {
     }
-
-    /// Add an action handler ie. url path and block
+    
+    // Add an action handler ie. url path and block
     open subscript(action: Action) -> ActionHandler? {
         get {
             return actions[action]
@@ -66,7 +58,7 @@ open class Manager {
         }
     }
 
-    /// Handle url from app delegate
+    // Handle url from app delegate
     open func handleOpen(url: URL) -> Bool {
         if url.scheme != self.callbackURLScheme || url.host != kXCUHost {
             return false
@@ -126,7 +118,7 @@ open class Manager {
                 var comp = URLComponents(url: url, resolvingAgainstBaseURL: false)!
                 comp &= error.XCUErrorQuery
                 if let newURL = comp.url {
-                    self.open(url: newURL)
+                    Manager.open(url: newURL)
                 }
                 return true
             }
@@ -139,27 +131,27 @@ open class Manager {
             var comp = URLComponents(url: url, resolvingAgainstBaseURL: false) {
             handler?(&comp)
             if let newURL = comp.url {
-                self.open(url: newURL)
+                Manager.open(url: newURL)
             }
         }
     }
 
-    /// Handle url with manager shared instance
+    // Handle url with manager shared instance
     open static func handleOpen(url: URL) -> Bool {
         return self.shared.handleOpen(url: url)
     }
     
     // MARK: - perform action with temporary client
 
-    /// Perform an action on client application
-    /// - Parameter action: The action to perform.
-    /// - Parameter urlScheme: The application scheme to apply action.
-    /// - Parameter parameters: Optional parameters for the action.
-    /// - Parameter onSuccess: callback for success.
-    /// - Parameter onFailure: callback for failure.
-    /// - Parameter onCancel: callback for cancel.
-    ///
-    /// Throws: CallbackURLKitError
+    // Perform an action on client application
+    // - Parameter action: The action to perform.
+    // - Parameter urlScheme: The application scheme to apply action.
+    // - Parameter parameters: Optional parameters for the action.
+    // - Parameter onSuccess: callback for success.
+    // - Parameter onFailure: callback for failure.
+    // - Parameter onCancel: callback for cancel.
+    //
+    // Throws: CallbackURLKitError
     open func perform(action: Action, urlScheme: String, parameters: Parameters = [:],
         onSuccess: SuccessCallback? = nil, onFailure: FailureCallback? = nil, onCancel: CancelCallback? = nil) throws {
             let client = Client(urlScheme: urlScheme)
@@ -172,7 +164,7 @@ open class Manager {
         try Manager.shared.perform(action: action, urlScheme: urlScheme, parameters: parameters, onSuccess: onSuccess, onFailure: onFailure, onCancel: onCancel)
     }
     
-    /// Utility function to get URL schemes from Info.plist
+    // Utility function to get URL schemes from Info.plist
     open static var urlSchemes: [String]? {
         guard let urlTypes = Bundle.main.infoDictionary?["CFBundleURLTypes"] as? [[String: AnyObject]] else {
             return nil
@@ -226,7 +218,7 @@ open class Manager {
             throw CallbackURLKitError.failedToCreateRequestURL(components: components)
         }
 
-        self.open(url: URL)
+        Manager.open(url: URL)
     }
 
     static func action(parameters: [String : String]) -> [String : String] {
@@ -240,28 +232,11 @@ open class Manager {
         return result
     }
 
-    open static func open(url: Foundation.URL) {
-        Manager.shared.open(url: url)
-    }
-
-    open func open(url: Foundation.URL) {
-        #if APP_EXTENSIONS
-            if let extensionContext = extensionContext {
-                extensionContext.open(url, completionHandler: extensionContextCompletionHandler)
-            }
-            else {
-                #if os(iOS) || os(tvOS)
-                    UIApplication.shared.openURL(url)
-                #elseif os(OSX)
-                    NSWorkspace.shared.open(url)
-                #endif
-            }
-        #else
-            #if os(iOS) || os(tvOS)
-                UIApplication.shared.openURL(url)
-            #elseif os(OSX)
-                NSWorkspace.shared.open(url)
-            #endif
+    static func open(url: Foundation.URL) {
+        #if os(iOS) || os(tvOS)
+            UIApplication.shared.openURL(url)
+        #elseif os(OSX)
+            NSWorkspace.shared().open(url)
         #endif
     }
 
@@ -273,6 +248,7 @@ open class Manager {
     }
 
 }
+
 
 #if os(OSX)
 extension Manager {

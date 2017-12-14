@@ -40,7 +40,7 @@ try Manager.shared.perform(action: "actionName", urlScheme: "application-name",
 ```
 
 #### Declare targeted applications URL schemes in iOS9
-You must whitelist any URL schemes your app wants to query in Info.plist under the *LSApplicationQueriesSchemes* key (an array of strings)
+In iOS 9 you must whitelist any URL schemes your app wants to query in Info.plist under the *LSApplicationQueriesSchemes* key (an array of strings)
 
 ![xcode-white-list](http://useyourloaf.com/assets/images/2015/2015-09-06-001.png)
 
@@ -71,7 +71,7 @@ Callbacks allow you to receives informations or status from the targeted applica
 Then you can specify one of the 3 x-callbacks: success, failure and cancel
 
 ```swift
-try client.perform(action: "actionName",
+try client.performn(action: "actionName",
     onSuccess: { parameters in
     },
 
@@ -109,6 +109,12 @@ And finally to handle incoming URLs, your application delegate should implement 
 
 On iOS
 ```swift
+func application(_ application: UIApplication, open url: NSURL, sourceApplication: String?, annotation: Any) -> Bool {
+    manager.handleOpen(url: url)
+    return true
+}
+
+@available(iOS 9.0, *)
 func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
     manager.handleOpen(url: url)
     return true
@@ -161,7 +167,6 @@ to learn more.
 To get an already implemented [Clients](/Clients) use one of the subspec
 ```ruby
 pod 'CallbackURLKit/GoogleChrome'
-pod 'CallbackURLKit/Ulysses' // https://ulyssesapp.com
 ```
 
 ## Links
